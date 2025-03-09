@@ -24,27 +24,29 @@
                 <h2>Signup</h2>
                 <p>Sign Up to Join</p>
 
-                <form action="#">
+                <form id="signupForm">
 
                     <div class="input-group">
                         <label>Full Name</label>
-                        <input type="text" placeholder="Full Name">
+                        <input type="text" placeholder="Full Name" id="fullName" required>
                     </div>
 
                     <div class="input-group">
                         <label>Email ID</label>
-                        <input type="email" placeholder="xyz12@gmail.com">
+                        <input type="email" placeholder="xyz12@gmail.com" id="emailId" required>
                     </div>
                     
                     <div class="input-group">
-                        <label>Password</label>
-                        <input type="password" placeholder="Password">
+                        <label>Password</label> <span class="inputError" id="passError">*</span>
+                        <input type="password" placeholder="Password" id="passWord" required>
+                        
                     </div>
 
-                    <button class="login-btn">Login</button>
+                    <button class="login-btn" type="submit" >Sign Up</button>
+
                     <button class="google-btn" id=""><img src="Images/google_icon.png"> Sign up with Google</button>
 
-                    <input type="checkbox" id="terms-condition" name="terms-condition"><label> I accept <a href="">Terms & Conditions</a></label>
+                    <input type="checkbox" id="termsCondition" name="terms-condition" required><label> I accept <a href="">Terms & Conditions</a></label>
 
                     <p class="login-link">Have an account? <a href="logIn.html">Log in ?</a></p>
                 </form>
@@ -57,6 +59,6 @@
     </section>
 
 
-
+<script src="script.js"></script>
 </body>
 </html>
