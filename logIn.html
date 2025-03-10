@@ -23,18 +23,19 @@
             <div class="quiz-login">
                 <h2>Login</h2>
                 <p>Please enter your details below</p>
-                <form action="#">
+                <form id="loginForm">
                     <div class="input-group">
                         <label>Email ID</label>
-                        <input type="email" placeholder="xyz12@gmail.com">
+                        <input type="email" id="loginEmail" placeholder="xyz12@gmail.com" required>
                     </div>
                     
                     <div class="input-group">
                         <label>Password</label>
-                        <input type="password" placeholder="Password">
+                        <input type="password" id="loginPassword" placeholder="Password" required>
                     </div>
 
-                    <button class="login-btn">Login</button>
+                    <button class="login-btn" type="submit">Login</button>
+
                     <button class="google-btn"><img src="Images/google_icon.png"> Sign up with Google</button>
 
                     <p class="signup-link">Don't have an accoun? <a href="signUp.html">Sign UP?</a></p>

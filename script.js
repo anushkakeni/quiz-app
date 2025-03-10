@@ -48,8 +48,34 @@ if(localStorage.getItem('quizAccount')=== null)
             document.getElementById("emailId").value= '' ;
             // document.getElementById("password").remove;
 
-            localStorage.clear();
+           let termConditions = document.getElementById("termsConditions").checked;
+           termConditions.checked = false;
         
-        })
+     })
 
 // login
+     document.getElementById("loginForm").addEventListener("submit", function(event){
+        event.preventDefault();  // Prevent form submission
+
+         //parse and get ArrayofObject from localstorage
+         let getAccount = JSON.parse(localStorage.getItem("quizAccount"));
+
+        // access data from arrayofObjects 
+        let  getEmail= getAccount[1].email;
+        let getPassword = getAccount[2].password;
+
+        let loginEmail = document.getElementById("loginEmail").value ;
+        let loginPassword = document.getElementById("loginPaaword").value ;
+
+        if(loginEmail === getEmail  && loginPassword === getPassword)
+        {
+            alert("login Successful");
+        }
+        else{
+            alert("Incorrect ");
+        }
+
+
+
+
+     })
