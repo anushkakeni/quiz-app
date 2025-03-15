@@ -33,7 +33,7 @@ if(localStorage.getItem('quizAccount')=== null)
             }
 
         
-            alert("Sign Up Successful");
+            alert("Successfully Registered ");
 
               // add new object in array
               let newAccount = {name: fullName, email: emailId, password: password};
@@ -53,29 +53,43 @@ if(localStorage.getItem('quizAccount')=== null)
         
      })
 
+
+
+
+
+
+
+     
 // login
-     document.getElementById("loginForm").addEventListener("submit", function(event){
-        event.preventDefault();  // Prevent form submission
 
-         //parse and get ArrayofObject from localstorage
-         let getAccount = JSON.parse(localStorage.getItem("quizAccount"));
+const login =  document.getElementById("abc")
+login.addEventListener("click",(event)=>{
+//    step 1- prevent refreshing of page
+    event.preventDefault();
+    loginBtn();
+})
 
-        // access data from arrayofObjects 
-        let  getEmail= getAccount[1].email;
-        let getPassword = getAccount[2].password;
+function loginBtn()
+{
+     //parse and get ArrayofObject from localstorage
+     let getAccount = JSON.parse(localStorage.getItem("quizAccount"));
+    // console.log(getAccount)
 
-        let loginEmail = document.getElementById("loginEmail").value ;
-        let loginPassword = document.getElementById("loginPaaword").value ;
-
-        if(loginEmail === getEmail  && loginPassword === getPassword)
-        {
-            alert("login Successful");
-        }
-        else{
-            alert("Incorrect ");
-        }
+     let loginEmail = document.getElementById("loginEmail").value ;
+     let loginPassword = document.getElementById("loginPassword").value ;
 
 
+    //  let isVerify = getAccount.some(s => s.email.toLowerCase() === loginEmail.toLowerCase() );
+    // console.log(isVerify)
+    // if(isVerifiy== true) alert("incore")
+    //     else alert("success")
 
 
-     })
+     let accountVerify2 = getAccount.filter(s => s.email.toLowerCase() == loginEmail.toLowerCase());
+      console.log(accountVerify2)
+    
+     console.log(accountVerify2[0].password)
+     if(accountVerify2.length===0) alert("incore")
+    else alert("success")
+
+}
