@@ -4,79 +4,76 @@ let accounts = [
         name: "Anushka Keni",
         email: "kenianushka@gmail.com",
         password: "@Anushka01@"
-    } 
+    }
 ];
 
-if(localStorage.getItem('quizAccount')=== null)
-{
+if (localStorage.getItem('quizAccount') === null) {
     localStorage.setItem('quizAccount', JSON.stringify(accounts));
 }
 
-    document.getElementById("signupForm").addEventListener("submit", function(event){
-        event.preventDefault();  // Prevent form submission
-        
-        //parse and get Array from localstorage
-           let parseAccount = JSON.parse(localStorage.getItem("quizAccount"));
+document.getElementById("signupForm").addEventListener("submit", function (event) {
+    event.preventDefault();  // Prevent form submission
 
-            let fullName = document.getElementById("fullName").value ;
-            let emailId = document.getElementById("emailId").value ;
-            let password = document.getElementById("passWord").value ;
+    //parse and get Array from localstorage
+    let parseAccount = JSON.parse(localStorage.getItem("quizAccount"));
 
-            let passError = document.getElementById("passError");
+    let fullName = document.getElementById("fullName").value;
+    let emailId = document.getElementById("emailId").value;
+    let password = document.getElementById("passWord").value;
 
-            let passValidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
-        
-            if(!passValidation.test(password))
-            {
-                passError.textContent = "Password must be at least 6 characters long, include an uppercase letter, a number, and a special character.";
-                return;
-            }
+    let passError = document.getElementById("passError");
 
-        
-            alert("Successfully Registered ");
+    let passValidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
 
-              // add new object in array
-              let newAccount = {name: fullName, email: emailId, password: password};
-              parseAccount.push(newAccount);
-  
-  
-              //set array in localstorage
-              localStorage.setItem('quizAccount', JSON.stringify(parseAccount));
+    if (!passValidation.test(password)) {
+        passError.textContent = "Password must be at least 6 characters long, include an uppercase letter, a number, and a special character.";
+        return;
+    }
 
 
-            document.getElementById("fullName").value= '' ;
-            document.getElementById("emailId").value= '' ;
-            // document.getElementById("password").remove;
+    alert("Successfully Registered ");
 
-           let termConditions = document.getElementById("termsConditions").checked;
-           termConditions.checked = false;
-        
-     })
+    // add new object in array
+    let newAccount = { name: fullName, email: emailId, password: password };
+    parseAccount.push(newAccount);
 
+
+    //set array in localstorage
+    localStorage.setItem('quizAccount', JSON.stringify(parseAccount));
+
+
+    document.getElementById("fullName").value = '';
+    document.getElementById("emailId").value = '';
+    // document.getElementById("password").remove;
+
+    let termConditions = document.getElementById("termsConditions").checked;
+    termConditions.checked = false;
+
+})
 
 
 
 
 
 
-     
+
+
 // login
 
-const login =  document.getElementById("abc")
-login.addEventListener("click",(event)=>{
-//    step 1- prevent refreshing of page
+const login = document.getElementById("abc")
+login.addEventListener("click", (event) => {
+    //    step 1- prevent refreshing of page
     event.preventDefault();
     loginBtn();
 })
 
-function loginBtn()
-{
-     //parse and get ArrayofObject from localstorage
-     let getAccount = JSON.parse(localStorage.getItem("quizAccount"));
+function loginBtn() {
+    //parse and get ArrayofObject from localstorage
+    let getAccount = JSON.parse(localStorage.getItem("quizAccount"));
     // console.log(getAccount)
 
-     let loginEmail = document.getElementById("loginEmail").value ;
-     let loginPassword = document.getElementById("loginPassword").value ;
+    let loginEmail = document.getElementById("loginEmail").value;
+    let loginPassword = document.getElementById("loginPassword").value;
 
 
     //  let isVerify = getAccount.some(s => s.email.toLowerCase() === loginEmail.toLowerCase() );
@@ -85,11 +82,10 @@ function loginBtn()
     //     else alert("success")
 
 
-     let accountVerify2 = getAccount.filter(s => s.email.toLowerCase() == loginEmail.toLowerCase());
-      console.log(accountVerify2)
-    
-     console.log(accountVerify2[0].password)
-     if(accountVerify2.length===0) alert("incore")
+    let accountVerify2 = getAccount.filter(s => s.email.toLowerCase() == loginEmail.toLowerCase());
+    console.log(accountVerify2)
+    console.log(accountVerify2[0].password)
+    if (accountVerify2.length === 0) alert("incore")
     else alert("success")
 
 }
