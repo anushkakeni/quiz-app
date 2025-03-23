@@ -68,24 +68,69 @@ login.addEventListener("click", (event) => {
 })
 
 function loginBtn() {
-    //parse and get ArrayofObject from localstorage
+    // step2-  parse and get ArrayofObject from localstorage
     let getAccount = JSON.parse(localStorage.getItem("quizAccount"));
     // console.log(getAccount)
 
-    let loginEmail = document.getElementById("loginEmail").value;
-    let loginPassword = document.getElementById("loginPassword").value;
+    // let loginEmail = document.getElementById("loginEmail").value;
+    // let loginPassword = document.getElementById("loginPassword").value;
 
-
+    // method 1- usinng some() to verify the account
     //  let isVerify = getAccount.some(s => s.email.toLowerCase() === loginEmail.toLowerCase() );
     // console.log(isVerify)
     // if(isVerifiy== true) alert("incore")
     //     else alert("success")
 
-
-    let accountVerify2 = getAccount.filter(s => s.email.toLowerCase() == loginEmail.toLowerCase());
-    console.log(accountVerify2)
-    console.log(accountVerify2[0].password)
-    if (accountVerify2.length === 0) alert("incore")
+    //method 2- using filter() to verify the account
+    let accountVerify = getAccount.filter(s => s.email.toLowerCase() == loginEmail.toLowerCase());
+    //console.log(accountVerify)
+    //console.log(accountVerify[0].password)
+    if (accountVerify.length === 0) alert("incore")
     else alert("success")
 
 }
+
+
+
+// quiz questions local storage
+//  for random questions
+//  use array of objects
+[
+    {
+        id:1,
+        question: "this is the question",
+        options:["asdfop","qw5",3,4],
+        userAnswer:0,
+        correctOption:3
+    },
+    {
+        id:1,
+        question: "this is the question",
+        options:["asdfop","qw5",3,4],
+        userAnswer:0,
+        correctOption:3
+    },
+    {
+        id:1,
+        question: "this is the question",
+        options:["asdfop","qw5",3,4],
+        userAnswer:0,
+        correctOption:3
+    },
+    {
+        id:1,
+        question: "this is the question",
+        options:["asdfop","qw5",3,4],
+        userAnswer:0,
+        correctOption:3
+    },
+    {
+        id:1,
+        question: "this is the question",
+        options:["asdfop","qw5",3,4],
+        userAnswer:0,
+        correctOption:3
+    },
+]
+
+randomIndex, counter1=-10, questions=[2,5,]// index geenrated or question id
