@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: "Arial", sans-serif;
     background-color: #f5f5f5;
 }
 
@@ -12,32 +12,73 @@
     padding: 16px 80px 16px 80px;
 }
 
+
+.quiz-page{
+    padding: 45px;
+}
+
 .quiz-form{
-    margin-top: 40px;
-    padding-left: 40px;
+    
+    padding-bottom: 45px;
    
 }  
 
-.quiz-form h1{
-     font-size: 61px;
-     font-weight: 600;
-     line-height: 120%;
+.quiz-form h2{
+     font-size: 51px;
+     margin-bottom: 15px;
 }
 
-.quiz-form p{
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 120%;
+.progress-bar {
+    height: 10px;
+    background: #ebebf0;
+    position: relative;
+    border-radius: 10px;
+}
+.progress {
+    height: 10px;
+    width: 10%;
+    background: #f3bd00;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.quiz-form .question{
+    font-size: 37px;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-left: 8px;
+    
 
 }
 
-.quiz-form h5{
+.quiz-form .options{
+    list-style-type: none;
+
+}
+
+.quiz-form .options li{
+    padding: 14px;
+    margin: 11px 0;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    
+}
+
+.quiz-form .options-text{
     font-size: 24px;
     font-weight: 500;
-    line-height: 120%;
+    margin-left: 10px;
 
-    padding: 8px 16px 8px 16px;
-    gap: 10px;
+   
+}
+
+.quiz-submit{
+    text-align: right;
+    cursor: pointer;
+
 }
 
 .quiz-submit em {
@@ -48,4 +89,7 @@
 }
 .quiz-submit span{
     color: #0948b4;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 120%;
 }
