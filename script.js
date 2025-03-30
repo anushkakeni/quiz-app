@@ -118,66 +118,66 @@ let quizQuestions= [
     },
     {
         id:2,
-        question:"What is the capital of France?" ,
-        options: ["Paris", "London", "Berlin", "Rome"],
+        question:"What is the national bird of the USA?" ,
+        options:["Bald Eagle", "Peacock", "Sparrow", "Ostrich"] ,
         userAnswer: "",
-        correctOption:"Paris"
+        correctOption: "Bald Eagle"
     },
     {
         id:3,
-        question:"What is the capital of France?" ,
-        options: ["Paris", "London", "Berlin", "Rome"],
+        question: "Who discovered gravity?" ,
+        options:  ["Newton", "Einstein", "Galileo", "Tesla"],
         userAnswer: "",
-        correctOption:"Paris"
+        correctOption: "Newton"
     },
     {
         id:4,
-        question:"What is the capital of France?" ,
-        options: ["Paris", "London", "Berlin", "Rome"],
+        question:"How many continents are there?" ,
+        options: ["7", "5", "6", "8"],
         userAnswer: "",
-        correctOption:"Paris"
+        correctOption:"7"
     },
     {
         id:5,
-        question:"What is the capital of France?" ,
-        options: ["Paris", "London", "Berlin", "Rome"],
+        question: "What is the chemical symbol for gold?",
+        options: ["Au", "Ag", "Fe", "Pb"] ,
         userAnswer: "",
-        correctOption:"Paris"
+        correctOption:"Au"
     },
     {
         id:6,
-        question:"What is the capital of France?" ,
-        options: ["Paris", "London", "Berlin", "Rome"],
+        question:"Which ocean is the largest?" ,
+        options: ["Pacific", "Atlantic", "Indian", "Arctic"],
         userAnswer: "",
-        correctOption:"Paris"
+        correctOption: "Pacific"
     },
     {
         id:7,
-        question:"What is the capital of France?" ,
-        options: ["Paris", "London", "Berlin", "Rome"],
+        question:"What is the square root of 64?",
+        options:["8", "6", "7", "9"],
         userAnswer: "",
-        correctOption:"Paris"
+        correctOption:"8"
     },
     {
         id:8,
-        question:"What is the capital of France?" ,
-        options: ["Paris", "London", "Berlin", "Rome"],
+        question:"What is H2O commonly known as?" ,
+        options: ["Water", "Oxygen", "Hydrogen", "Salt"] ,
         userAnswer: "",
-        correctOption:"Paris"
+        correctOption:"Water"
     },
     {
         id:9,
-        question:"What is the capital of France?" ,
-        options: ["Paris", "London", "Berlin", "Rome"],
+        question:"How many legs does a spider have?" ,
+        options:  ["8", "6", "10", "12"],
         userAnswer: "",
-        correctOption:"Paris"
+        correctOption:"8"
     },
     {
         id:10,
-        question:"What is the capital of France?" ,
-        options: ["Paris", "London", "Berlin", "Rome"],
+        question:"What is the capital of Japan?" ,
+        options:["Tokyo", "Kyoto", "Osaka", "Seoul"],
         userAnswer: "",
-        correctOption:"Paris"
+        correctOption:"Tokyo"
     }
 ];
 
@@ -185,8 +185,8 @@ if (localStorage.getItem('quizQuestion') === null) {
     localStorage.setItem('quizQuestion', JSON.stringify(questions));
 }
 
-//set counter for question nos.
-let currentQuestionIndex = 1;
+//set counter 0 for array indexing questions from index 0
+let currentQuestionIndex = 0;
 
 function nextQuestion(){
 
@@ -195,7 +195,9 @@ function nextQuestion(){
   let getQuestionsAndAnswers = JSON.parse(localStorage.getItem("quizQuestions"));
 
 //radomly generate the questions in array
-  let randomQuestions = Math.floor(Math.random() * getQuestions.length);
+//Math.floor(Math.random())
+//.slice for any 10 questions only
+  let randomQuestions = Math.floor(Math.random()).slice(0,10);
 
 //access data from array of objects
 //array[random].objectKey
