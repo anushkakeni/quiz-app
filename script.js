@@ -4,35 +4,42 @@ let accounts = [
         name: "Anushka Keni",
         email: "kenianushka@gmail.com",
         password: "@Anushka01@"
-    }
+    } 
+    
 ];
 
 if (localStorage.getItem('quizAccount') === null) {
     localStorage.setItem('quizAccount', JSON.stringify(accounts));
 }
 
-document.getElementById("signupForm").addEventListener("submit", function (event) {
-    event.preventDefault();  // Prevent form submission
 
-    //parse and get Array from localstorage
+document.addEventListener("DOMContentLoaded", function() {
+  
+//signup
+    let signupForm =  document.getElementById("signupForm")
+   if(signupForm)
+    {
+       signupForm.addEventListener("submit", function (event) {
+            event.preventDefault();  // Prevent form submission
+
+         //parse and get Array from localstorage
     let parseAccount = JSON.parse(localStorage.getItem("quizAccount"));
 
     let fullName = document.getElementById("fullName").value;
-    let emailId = document.getElementById("emailId").value;
-    let password = document.getElementById("passWord").value;
+     let emailId = document.getElementById("emailId").value;
+     let password = document.getElementById("passWord").value;
 
-    let passError = document.getElementById("passError");
+     let passError = document.getElementById("passError");
 
-    let passValidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+     let passValidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
 
-    if (!passValidation.test(password)) {
+     if (!passValidation.test(password)) {
         passError.textContent = "Password must be at least 6 characters long, include an uppercase letter, a number, and a special character.";
         return;
-    }
-
-
-    alert("Successfully Registered ");
-
+       }
+    
+      alert("Successfully Registered ");
+ 
     // add new object in array
     let newAccount = { name: fullName, email: emailId, password: password };
     parseAccount.push(newAccount);
@@ -44,56 +51,60 @@ document.getElementById("signupForm").addEventListener("submit", function (event
 
     document.getElementById("fullName").value = '';
     document.getElementById("emailId").value = '';
-    // document.getElementById("password").remove;
+    document.getElementById("passWord").value = '';
 
-    let termConditions = document.getElementById("termsConditions").checked;
-    termConditions.checked = false;
-
-})
-
-
-
-
-
-
-// login
-
-const login = document.getElementById("abc")
-login.addEventListener("click", (event) => {
-    //    step 1- prevent refreshing of page
-    event.preventDefault();
-    loginBtn();
-})
-
-function loginBtn() {
-    // step2-  parse and get ArrayofObject from localstorage
-    let getAccount = JSON.parse(localStorage.getItem("quizAccount"));
-    // console.log(getAccount)
-
-    // let loginEmail = document.getElementById("loginEmail").value;
-    // let loginPassword = document.getElementById("loginPassword").value;
-
-    // method 1- usinng some() to verify the account
-    //  let isVerify = getAccount.some(s => s.email.toLowerCase() === loginEmail.toLowerCase() );
-    // console.log(isVerify)
-    // if(isVerifiy== true) alert("incore")
-    //     else alert("success")
-
-    //method 2- using filter() to verify the account
-    let accountVerify = getAccount.filter(s => s.email.toLowerCase() == loginEmail.toLowerCase());
-    //console.log(accountVerify)
-    //console.log(accountVerify[0].password)
-    if (accountVerify.length === 0) alert("incore")
-    else alert("success")
-
+    // let termConditions = document.getElementById("termsConditions").checked;
+    // termConditions.checked = false;  
+      
+    });
 }
 
 
 
+//login
+
+let login = document.getElementById("abc");
+if(login)
+{
+    login.addEventListener("click", (event) => {
+     //    step 1- prevent refreshing of page
+        event.preventDefault();
+        loginBtn();
+
+    });
+
+ function loginBtn() {
+    //parse and get ArrayofObject from localstorage
+    let getAccount = JSON.parse(localStorage.getItem("quizAccount"));
+    // console.log(getAccount)
+    
+    let loginEmail = document.getElementById("loginEmail").value;
+     let loginPassword = document.getElementById("loginPassword").value;
+
+
+     let accountVerify = getAccount.find(s => s.email.toLowerCase() == loginEmail.toLowerCase());
+    //  console.log(accountVerify2)
+    //  console.log(accountVerify2[0].password)
+    //  if (accountVerify2.length === 0) alert("incore")
+    //  else alert("success")
+    if (!accountVerify) {
+        alert("Incorrect Email or Password");
+    } else if (accountVerify.password !== loginPassword) {
+        alert("Incorrect Password");
+    } else {
+        window.location.href= "questionPage.html";
+    }
+
+   }
+
+}
+
+
+});
 
 
 
-//quiz-question
+// //quiz-question
 
 // quiz questions local storage
 //  for random questions:- use array of objects
@@ -199,4 +210,4 @@ function nextQuestion(){
 
 }
 
-randomIndex ok , counter1=-10, questions=[2,5,]// index geenrated or question id
+// // randomIndex ok , counter1=-10, questions=[2,5,]// index geenrated or question 
