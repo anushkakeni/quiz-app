@@ -181,14 +181,16 @@ let quizQuestions= [
     }
 ];
 
-if (localStorage.getItem('quizQuestion') === null) {
-    localStorage.setItem('quizQuestion', JSON.stringify(questions));
+if (localStorage.getItem('quizQuestionS') === null) {
+    localStorage.setItem('quizQuestionS', JSON.stringify(quizQuestions));
 }
 
 //set counter 0 for array indexing questions from index 0
 let currentQuestionIndex = 0;
 
+
 function nextQuestion(){
+
 
 //parse and get data from local storage to array of object
   
@@ -196,18 +198,44 @@ function nextQuestion(){
 
 //radomly generate the questions in array
 //Math.floor(Math.random())
-//.slice for any 10 questions only
-  let randomQuestions = Math.floor(Math.random()).slice(0,10);
+//.slice() for any 10 questions only
+  let randomIndex = Math.floor(Math.random() * getQuestionsAndAnswers.length);
+  let randomQuestions= randomIndex.slice(0,10);
 
 //access data from array of objects
 //array[random].objectKey
   let getQuestions = getQuestionsAndAnswers[randomQuestions].question;
-  let getCorrect =  getQuestionsAndAnswers[randomQuestions].correctOption;
+
+  let getOptions= getQuestionsAndAnswers[randomQuestions].options;
+  getOptions.forEach(optionFunction);
+  let optionList= "";
+  document.getElementById("option-list").innerHtml = optionList;
+  function optionFunction(item)
+  {
+    optionList+= item + "<br>";
+  }
+
+//   let getCorrect =  getQuestionsAndAnswers[randomQuestions].correctOption;
 
 
-   document.getElementById("question-counter").innerText = "Question" + (currentQuestionIndex + 1) + "of 10";
+// if(currentQuestionIndex < getQuestions.length - 1)
+//     {
+//         currentQuestionIndex++;
+//     }else{
+//         alert("Quiz Completed");
+//         return;
+//     }
+
+
+   document.getElementById("question-counter").innerHTML = "Question" + (currentQuestionIndex + 1) + "of 10";
    
-   document.getElementById("question-text").innerText = (currentQuestionIndex + 1) + "." + getQuestions;
+   document.getElementById("question-text").innerHTML = (currentQuestionIndex + 1) + "." + getQuestions;
+
+
+
+ //use querySelector to select the option
+   const options = document.querySelectorAll(".option-text");
+
 
 
 }
