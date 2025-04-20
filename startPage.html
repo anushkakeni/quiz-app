@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz-App</title>
+    
+    <link href="startPage.css" rel="stylesheet">
+
 
      <!-- google fonts -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,19 +25,35 @@
         </div>
     </header>
 
-    <section>
+    <section >
         <h1>Let's Start the Quiz</h1>
 
-        <div>
-            <div>
+        <div class="screen">
+            <div class="box1">
 
             </div>
 
             <h2>Catchy Line for Starting Quiz</h2>
-            <p>When you're done, review your answers and See your rank</p>
+            <h6>When you're done, review your answers and See your rank</h6>
 
-            <label>Full Name</label>
-            <input type="text" placeholder="Full Name"
+           <div class="profile-info">
+                <div>
+                    <p>Full Name<span>*</span></p>
+                    <input type="text" placeholder="Full Name">
+               </div>
+
+               <div>
+                <p>Email<span>*</span></p>
+                <input type="text" placeholder="Email">
+              </div>
+
+              <div>
+                <p>Contact No<span>*</span></p>
+                <input type="text" placeholder="Conatact No">
+              </div>
+          </div>
+
+          <button class="startquiz-button" onclick="startQuiz">Start Quiz</button>
 
         </div>
 
