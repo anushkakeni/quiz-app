@@ -193,27 +193,30 @@ function nextQuestion(){
 
 
 //parse and get data from local storage to array of object
-  
   let getQuestionsAndAnswers = JSON.parse(localStorage.getItem("quizQuestions"));
 
-//radomly generate the questions in array
+// store questions array in set
+//radomly generate the questions in set
 //Math.floor(Math.random())
-//.slice() for any 10 questions only
-  let randomIndex = Math.floor(Math.random() * getQuestionsAndAnswers.length);
-  let randomQuestions= randomIndex.slice(0,10);
+// can use .slice() for any 10 questions only
+ let selectedSet = new Set();
 
+ while (selectedSet.size < 10)
+ {
+  let randomIndex = Math.floor(Math.random() * getQuestionsAndAnswers.length);
+  //add questionandanswer in set
+  selectedSet.add(getQuestionsAndAnswers[randomIndex]);
+ }
 //access data from array of objects
 //array[random].objectKey
-  let getQuestions = getQuestionsAndAnswers[randomQuestions].question;
+//   let getQuestions = getQuestionsAndAnswers[randomQuestions].question;
 
-  let getOptions= getQuestionsAndAnswers[randomQuestions].options;
-  getOptions.forEach(optionFunction);
-  let optionList= "";
-  document.getElementById("option-list").innerHtml = optionList;
-  function optionFunction(item)
-  {
-    optionList+= item + "<br>";
-  }
+//   let getOptions= getQuestionsAndAnswers[randomQuestions].options;
+
+   question.innerText = selectedSet.question;
+
+
+
 
 //   let getCorrect =  getQuestionsAndAnswers[randomQuestions].correctOption;
 
@@ -227,14 +230,14 @@ function nextQuestion(){
 //     }
 
 
-   document.getElementById("question-counter").innerHTML = "Question" + (currentQuestionIndex + 1) + "of 10";
+//    document.getElementById("question-counter").innerHTML = "Question" + (currentQuestionIndex + 1) + "of 10";
    
-   document.getElementById("question-text").innerHTML = (currentQuestionIndex + 1) + "." + getQuestions;
+//    document.getElementById("question-text").innerHTML = (currentQuestionIndex + 1) + "." + getQuestions;
 
 
 
  //use querySelector to select the option
-   const options = document.querySelectorAll(".option-text");
+//    const options = document.querySelectorAll(".option-text");
 
 
 
