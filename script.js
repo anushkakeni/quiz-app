@@ -92,7 +92,7 @@ if(login)
     } else if (accountVerify.password !== loginPassword) {
         alert("Incorrect Password");
     } else {
-        window.location.href= "questionPage.html";
+        window.location.href= "startPage.html";
     }
 
    }
