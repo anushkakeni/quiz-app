@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // quiz questions local storage
 //  for random questions:- use array of objects
-let quizQuestions = [
+let allQuestions = [
     {
         id: 1,
         question: "What is the capital of France?",
@@ -187,8 +187,8 @@ let quizQuestions = [
     }
 ];
 
-if (localStorage.getItem('quizQuestionS') === null) {
-    localStorage.setItem('quizQuestionS', JSON.stringify(quizQuestions));
+if (localStorage.getItem('allQuestionS') === null) {
+    localStorage.setItem('allQuestionS', JSON.stringify(allQuestions));
 }
 
 
@@ -196,7 +196,7 @@ if (localStorage.getItem('quizQuestionS') === null) {
 function startQuiz() {
     //parse when game starts
     //parse and get data from local storage to array of object 
-    let getAllQuestions = JSON.parse(localStorage.getItem("quizQuestions"));
+    let getAllQuestions = JSON.parse(localStorage.getItem("allQuestions"));
 
     // store questions array in set
     //radomly generate the questions in set
@@ -214,17 +214,30 @@ function startQuiz() {
     //use "..."operator to convertsetto array
     //use .map() on set to pick each questions from getAllQuestions 
 
+    let selectedQuestion = [...selectedSet].map(i => getAllQuestions[i]);
+
+    // store it in local storage again
+    localStorage.setItem(" quizQuestions", JSON.stringify("selectedQuestions"));
+
     // redirect to question.html page
     window.location.href = "questionPage.html";
 
 }
 
 
-function showQuestions() {
-    //set counter 0 for array indexing questions from index 0
-    let currentQuestionIndex = 0;
 
-    // let getAllQuestions = JSON.parse(localStorage.getItem("quizQuestions"));
+//set counter 0 for array indexing questions from index 0
+let currentQuestionIndex = 0;
+
+//parse 10 quiz questions from new localstorage
+let displayQuestions = JSON.parse(localStorage.getItem("quizQuestions"));
+
+
+function showQuestions() {
+    if(currentQuestionIndex >= displayQuestions.length)
+    {
+        
+    }
 
 }
 
