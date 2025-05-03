@@ -233,17 +233,22 @@ let currentQuestionIndex = 0;
 let displayQuestions = JSON.parse(localStorage.getItem("quizQuestions"));
 
 let questionText= document.getElementById("question-text");
+let score = 0;
 function showQuestions() {
     
     // debugger;
    //questions
-    let currentQuestion = displayQuestions[currentQuestionIndex];
-    let presentQuestion = `${currentQuestionIndex + 1}: ${currentQuestion.question}`;
+    let currentQuestion = displayQuestions[currentQuestionIndex];  //displayQuestion= 10 questions stored, currentQuestionsIndex tracks which question the user is on./ similar to index of an array "i"
+    //displayQuestions[currentQuestionIndex], same as displayQuestion[i], i=0
+
+    let presentQuestion = `${currentQuestionIndex + 1}. ${currentQuestion.question}`; //
 
     //options
-    currentQuestion.options.foreach((options, index) =>{
+    currentQuestion.options.forEach((options, index) =>{
          presentQuestion +=
-         `  <label>
+         
+         `  <br>
+            <label>
             <input type="radio" name="option" value="${options}">
             ${options}
             </label><br> `;
@@ -256,32 +261,11 @@ function showQuestions() {
 
 showQuestions();
 
-// function nextQuestion() {
-
-
-//     // store questions array in set
-//     //radomly generate the questions in set
-//     //Math.floor(Math.random())
-//     // can use .slice() for any 10 questions only
-//     let selectedSet = new Set();
-
-//     while (selectedSet.size < 10) {
-//         let randomIndex = Math.floor(Math.random() * getQuestionsAndAnswers.length);
-//         //add questionandanswer in set
-//         selectedSet.add(getQuestionsAndAnswers[randomIndex]);
-//     }
-//     //access data from array of objects
-//     //array[random].objectKey
-//     //   let getQuestions = getQuestionsAndAnswers[randomQuestions].question;
-
-//     //   let getOptions= getQuestionsAndAnswers[randomQuestions].options;
-
-//     question.innerText = selectedSet.question;
-
-
-
+function nextQuestion() {
 
     //   let getCorrect =  getQuestionsAndAnswers[randomQuestions].correctOption;
+
+ 
 
 
     // if(currentQuestionIndex < getQuestions.length - 1)
@@ -304,6 +288,6 @@ showQuestions();
 
 
 
-// }
+}
 // showQuestions()
-// // randomIndex ok , counter1=-10, questions=[2,5,]// index geenrated or question 
+// // randomIndex ok , counter1= 10 ok, questions=[2,5,]// index geenrated or question 
