@@ -187,8 +187,8 @@ let allQuestions = [
     }
 ];
 
-if (localStorage.getItem('allQuestionS') === null) {
-    localStorage.setItem('allQuestionS', JSON.stringify(allQuestions));
+if (localStorage.getItem('allQuestions') === null) {
+    localStorage.setItem('allQuestions', JSON.stringify(allQuestions));
 }
 
 
@@ -214,10 +214,10 @@ function startQuiz() {
     //use "..."operator to convertsetto array
     //use .map() on set to pick each questions from getAllQuestions 
 
-    let selectedQuestion = [...selectedSet].map(i => getAllQuestions[i]);
+    // let selectedQuestion = [...selectedSet].map(i => getAllQuestions[i]);
 
     // store it in local storage again
-    localStorage.setItem(" quizQuestions", JSON.stringify("selectedQuestions"));
+    localStorage.setItem("quizQuestions", JSON.stringify("selectedQuestion"));
 
     // redirect to question.html page
     window.location.href = "questionPage.html";
@@ -232,38 +232,51 @@ let currentQuestionIndex = 0;
 //parse 10 quiz questions from new localstorage
 let displayQuestions = JSON.parse(localStorage.getItem("quizQuestions"));
 
-
+let questionText= document.getElementById("question-text");
 function showQuestions() {
-    if(currentQuestionIndex >= displayQuestions.length)
-    {
-        
-    }
+    
+    // debugger;
+   //questions
+    let currentQuestion = displayQuestions[currentQuestionIndex];
+    let presentQuestion = `${currentQuestionIndex + 1}: ${currentQuestion.question}`;
+
+    //options
+    currentQuestion.options.foreach((options, index) =>{
+         presentQuestion +=
+         `  <label>
+            <input type="radio" name="option" value="${options}">
+            ${options}
+            </label><br> `;
+    });
+
+    questionText.innerHTML = presentQuestion;
+
 
 }
 
+showQuestions();
+
+// function nextQuestion() {
 
 
-function nextQuestion() {
+//     // store questions array in set
+//     //radomly generate the questions in set
+//     //Math.floor(Math.random())
+//     // can use .slice() for any 10 questions only
+//     let selectedSet = new Set();
 
+//     while (selectedSet.size < 10) {
+//         let randomIndex = Math.floor(Math.random() * getQuestionsAndAnswers.length);
+//         //add questionandanswer in set
+//         selectedSet.add(getQuestionsAndAnswers[randomIndex]);
+//     }
+//     //access data from array of objects
+//     //array[random].objectKey
+//     //   let getQuestions = getQuestionsAndAnswers[randomQuestions].question;
 
-    // store questions array in set
-    //radomly generate the questions in set
-    //Math.floor(Math.random())
-    // can use .slice() for any 10 questions only
-    let selectedSet = new Set();
+//     //   let getOptions= getQuestionsAndAnswers[randomQuestions].options;
 
-    while (selectedSet.size < 10) {
-        let randomIndex = Math.floor(Math.random() * getQuestionsAndAnswers.length);
-        //add questionandanswer in set
-        selectedSet.add(getQuestionsAndAnswers[randomIndex]);
-    }
-    //access data from array of objects
-    //array[random].objectKey
-    //   let getQuestions = getQuestionsAndAnswers[randomQuestions].question;
-
-    //   let getOptions= getQuestionsAndAnswers[randomQuestions].options;
-
-    question.innerText = selectedSet.question;
+//     question.innerText = selectedSet.question;
 
 
 
@@ -291,6 +304,6 @@ function nextQuestion() {
 
 
 
-}
-
+// }
+// showQuestions()
 // // randomIndex ok , counter1=-10, questions=[2,5,]// index geenrated or question 
