@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let login = document.getElementById("abc");
     if (login) {
         login.addEventListener("click", (event) => {
-            //    step 1- prevent refreshing of page
+            //    step 1- prevent any default action from happening of that event  
             event.preventDefault();
             loginBtn();
 
@@ -214,10 +214,10 @@ function startQuiz() {
     //use "..."operator to convertsetto array
     //use .map() on set to pick each questions from getAllQuestions 
 
-    // let selectedQuestion = [...selectedSet].map(i => getAllQuestions[i]);
+    let selectedQuestions = [...selectedSet].map(i => getAllQuestions[i]);
 
     // store it in local storage again
-    localStorage.setItem("quizQuestions", JSON.stringify("selectedQuestion"));
+    localStorage.setItem("quizQuestions", JSON.stringify(selectedQuestions));
 
     // redirect to question.html page
     window.location.href = "questionPage.html";
@@ -234,6 +234,9 @@ let displayQuestions = JSON.parse(localStorage.getItem("quizQuestions"));
 
 let questionText= document.getElementById("question-text");
 let score = 0;
+
+
+
 function showQuestions() {
     
     // debugger;
