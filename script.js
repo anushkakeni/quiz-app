@@ -244,7 +244,7 @@ function showQuestions() {
     let currentQuestion = displayQuestions[currentQuestionIndex];  //displayQuestion= 10 questions stored, currentQuestionsIndex tracks which question the user is on./ similar to index of an array "i"
     //displayQuestions[currentQuestionIndex], same as displayQuestion[i], i=0
 
-    let presentQuestion = `${currentQuestionIndex + 1}. ${currentQuestion.question}`; //
+    let presentQuestion = `${currentQuestionIndex + 1}. ${currentQuestion.question}`; //tempelate literal
 
     //options
     currentQuestion.options.forEach((options, index) =>{
@@ -262,9 +262,23 @@ function showQuestions() {
 
 }
 
-showQuestions();
+// showQuestions();
 
 function nextQuestion() {
+
+    //check if option is selcted
+    //use QuerySelector or forEach
+    // querySelector find selected options fast
+    //querySelector syntax- document.querySelector(css selector)
+    let userSelection = document.querySelector('input[name="option"]:checked');
+
+    if(!userSelection)
+    {
+        alert("please select an answer");
+        return;
+    }
+
+    
 
     //   let getCorrect =  getQuestionsAndAnswers[randomQuestions].correctOption;
 
@@ -292,5 +306,5 @@ function nextQuestion() {
 
 
 }
-// showQuestions()
+showQuestions()
 // // randomIndex ok , counter1= 10 ok, questions=[2,5,]// index geenrated or question 
