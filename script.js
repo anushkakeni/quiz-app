@@ -114,76 +114,76 @@ let allQuestions = [
         question: "What is the capital of France?",
         options: ["Paris", "London", "Berlin", "Rome"],
         userAnswer: null,
-        correctOption: 0
+        correctOption: "Paris"
     },
     {
         id: 2,
         question: "What is the national bird of the USA?",
         options: ["Bald Eagle", "Peacock", "Sparrow", "Ostrich"],
         userAnswer: null,
-        correctOption: 0
+        correctOption: "Bald Eagle"
     },
     {
         id: 3,
         question: "Who discovered gravity?",
         options: ["Newton", "Einstein", "Galileo", "Tesla"],
         userAnswer: null,
-        correctOption: 0
+        correctOption: "Newton"
     },
     {
         id: 4,
         question: "How many continents are there?",
         options: ["7", "5", "6", "8"],
         userAnswer: null,
-        correctOption: 0
+        correctOption: "7"
     },
     {
         id: 5,
         question: "What is the chemical symbol for gold?",
         options: ["Au", "Ag", "Fe", "Pb"],
         userAnswer: null,
-        correctOption: 0
+        correctOption: "Au"
     },
     {
         id: 6,
         question: "Which ocean is the largest?",
         options: ["Pacific", "Atlantic", "Indian", "Arctic"],
         userAnswer: null,
-        correctOption: 0
+        correctOption: "Pacific"
     },
     {
         id: 7,
         question: "What is the square root of 64?",
         options: ["8", "6", "7", "9"],
         userAnswer: null,
-        correctOption: 0
+        correctOption: "8"
     },
     {
         id: 8,
         question: "What is H2O commonly known as?",
         options: ["Water", "Oxygen", "Hydrogen", "Salt"],
         userAnswer: null,
-        correctOption: 0
+        correctOption: "Water"
     },
     {
         id: 9,
         question: "How many legs does a spider have?",
         options: ["8", "6", "10", "12"],
         userAnswer: null,
-        correctOption: 0
+        correctOption: "8"
     },
     {
         id: 10,
         question: "What is the capital of Japan?",
         options: ["Tokyo", "Kyoto", "Osaka", "Seoul"],
         userAnswer: null,
-        correctOption: 0
+        correctOption: "Tokyo"
     },
     {
         question: "Which planet is closest to the Sun?",
         options: ["Earth", "Venus", "Mercury", "Mars"],
         userAnswer: null,
-        correctOption: 2
+        correctOption: "Mercury"
     }
 ];
 
@@ -239,10 +239,33 @@ let score = 0;
 
 function showQuestions() {
     
-    // debugger;
+     debugger;
+    
+    //complete quiz
+    
+
    //questions
     let currentQuestion = displayQuestions[currentQuestionIndex];  //displayQuestion= 10 questions stored, currentQuestionsIndex tracks which question the user is on./ similar to index of an array "i"
     //displayQuestions[currentQuestionIndex], same as displayQuestion[i], i=0
+
+    //question counter
+    let questionCounter = document.getElementById("question-counter")
+    // document.getElementById("question-counter").innerHTML= `Question  ${currentQuestionIndex + 1}  of  ${displayQuestions.length} `;
+        if(currentQuestionIndex >= displayQuestions.length - 1)
+        {
+           questionCounter.innerHTML= "Last 2 Question Left";
+
+        }
+        else if(currentQuestionIndex >= displayQuestions.length)
+        {
+            questionCounter.innerHTML= "Last 1 Question Left";
+
+        }
+        else{
+            questionCounter.innerHTML= `Question  ${currentQuestionIndex + 1}  of  ${displayQuestions.length} `;
+
+        }
+
 
     let presentQuestion = `${currentQuestionIndex + 1}. ${currentQuestion.question}`; //tempelate literal
 
@@ -270,40 +293,29 @@ function nextQuestion() {
     //use QuerySelector or forEach
     // querySelector find selected options fast
     //querySelector syntax- document.querySelector(css selector)
-    let userSelection = document.querySelector('input[name="option"]:checked');
+    let selected = document.querySelector('input[name="option"]:checked');
 
-    if(!userSelection)
+    if(!selected)
     {
         alert("please select an answer");
         return;
     }
+     
+    //assign selected value to variable
+    let userSelection = selected.value;
 
+    //get correctOption and assign to variale
+    let correctAnswer = displayQuestions[currentQuestionIndex].correctOption;
     
 
-    //   let getCorrect =  getQuestionsAndAnswers[randomQuestions].correctOption;
+    //check if option selected is correct
+    if(userSelection === correctAnswer)
+    {
+        score += 10;
+    }
+    currentQuestionIndex++;
 
- 
-
-
-    // if(currentQuestionIndex < getQuestions.length - 1)
-    //     {
-    //         currentQuestionIndex++;
-    //     }else{
-    //         alert("Quiz Completed");
-    //         return;
-    //     }
-
-
-    //    document.getElementById("question-counter").innerHTML = "Question" + (currentQuestionIndex + 1) + "of 10";
-
-    //    document.getElementById("question-text").innerHTML = (currentQuestionIndex + 1) + "." + getQuestions;
-
-
-
-    //use querySelector to select the option
-    //    const options = document.querySelectorAll(".option-text");
-
-
+    showQuestions();
 
 }
 showQuestions()
