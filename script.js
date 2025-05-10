@@ -233,13 +233,14 @@ let currentQuestionIndex = 0;
 let displayQuestions = JSON.parse(localStorage.getItem("quizQuestions"));
 
 let questionText= document.getElementById("question-text");
+let optionText= document.getElementById("option-text");
 let score = 0;
 
 
 
 function showQuestions() {
     
-     debugger;
+     //debugger;
     
     //complete quiz
     
@@ -270,8 +271,9 @@ function showQuestions() {
     let presentQuestion = `${currentQuestionIndex + 1}. ${currentQuestion.question}`; //tempelate literal
 
     //options
+    let  presentOption = '';
     currentQuestion.options.forEach((options, index) =>{
-         presentQuestion +=
+        presentOption  +=
          
          `  <br>
             <label>
@@ -281,6 +283,8 @@ function showQuestions() {
     });
 
     questionText.innerHTML = presentQuestion;
+    optionText.innerHTML = presentOption;
+
 
 
 }

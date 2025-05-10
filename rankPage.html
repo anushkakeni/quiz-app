@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz-App</title>
-    <link rel="stylesheet" href="questionPage-style.css">
+    <title>Quiz App</title>
+     <link rel="stylesheet" href="rankPage-style.css">
 
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,35 +18,44 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </head>
-
 <body>
-
-    <header id="header">
+    
+     <header id="header">
         <img src="/Images/techpaathshala_logo.png" alt="techpaathshala_logo">
-
     </header>
 
-    <div class="quiz-page">
-        <section class="quiz-form">
-            <h2 id="question-counter"></h2>
+    <div class="leaderboard-container">
+        <h1>Wow You Rank 1st</h1>
+        <!-- <p class="subtext">Supporting Text</p> -->
 
-            <div class="progress-bar">
-                <div class="progress" id="progress"></div>
+        <div class="podium">
+
+            <div class="rank-2">
+                <span class="rank-number">#2</span>
+                <p class="score-label">Score</p>
+                <p class="score-value">844</p>
             </div>
 
-            <div class="question" id="question-text"> </div>
-            <div class="option"  id="option-text"></div>
+            <div class="rank-1">
+                <span class="rank-number">#1</span>
+                <p class="score-label">Score</p>
+                <p class="score-value">1024</p>
+            </div>
 
-        </section>
+            <div class="rank-3">
+                <span class="rank-number">#3</span>
+                <p class="score-label">Score</p>
+                <p class="score-value">620</p>
+            </div>
 
-        <section class="quiz-submit" onclick="nextQuestion()">
-            <em>Submit & Continue </em> <span>&rarr;</span>
-        </section>
+        </div>
 
+        <div class="lower-ranks">
+                <div class="row"><span>#4 Name</span><span>400</span></div>
+        </div>
+
+       
     </div>
 
-    <script src="script.js"></script>
-
 </body>
-
 </html>
