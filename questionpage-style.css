@@ -87,13 +87,27 @@
 
 }
 
-.quiz-submit em {
+.quiz-submit .quiz-previous {
+   padding-right: 953px;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 120%;
+    color: #8e8e93;
+}
+.quiz-previous span{
+    color: #8e8e93;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 120%;
+}
+
+.quiz-submit .quiz-next {
     font-size: 32px;
     font-weight: 500;
     line-height: 120%;
     color: #0948b4;
 }
-.quiz-submit span{
+.quiz-next span{
     color: #0948b4;
     font-size: 32px;
     font-weight: 500;

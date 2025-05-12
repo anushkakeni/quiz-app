@@ -322,5 +322,14 @@ function nextQuestion() {
     showQuestions();
 
 }
+
+function preQuestion(){
+
+    currentQuestionIndex--;
+
+    showQuestions();
+
+ 
+}
 showQuestions()
 // // randomIndex ok , counter1= 10 ok, questions=[2,5,]// index geenrated or question 

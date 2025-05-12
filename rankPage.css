@@ -1,5 +1,5 @@
 *{
-    padding: 0;
+    padding: 2rem;
     margin: 0;
     box-sizing: border-box;
     font-family: "Arial", sans-serif;
@@ -29,4 +29,55 @@
     align-items: flex-end;
     gap: 1rem;
     margin-bottom: 3px;
+
+}
+
+.rank{
+     background: #f0f0f0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+
+}
+
+.rank-1{
+    background-color: gold;
+    padding-top: 2rem;
+    transform: translateY(-20px);
+}
+
+.rank-number{
+    font-weight: bold;
+    font-size: 1.2rem;
+
+}
+
+.score-label{
+    font-weight: bold;
+    margin: 0;
+
+}
+
+.score-value{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.lower-ranks{
+    margin-top: 1rem;
+}
+
+.row{
+      background: #fff;
+  border: 1px solid #eee;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+
 }
