@@ -104,6 +104,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
+//user data
+let user={
+    username: "",
+    totalScore: 0,
+    recentScore: 0
+
+};
+localStorage.setItem('user', JSON.stringify(user));
+
+
+
+
 // //quiz-question
 
 // quiz questions local storage
@@ -272,6 +285,7 @@ function showQuestions() {
 
     //options
     let  presentOption = '';
+    
     currentQuestion.options.forEach((options, index) =>{
         presentOption  +=
          
@@ -284,12 +298,16 @@ function showQuestions() {
 
     questionText.innerHTML = presentQuestion;
     optionText.innerHTML = presentOption;
-
-
-
 }
 
 // showQuestions();
+
+
+
+function saveselectedAnswer{
+    let selectedAnswer= document.querySelector(`input[name="options"]:checked`);
+}
+
 
 function nextQuestion() {
 
@@ -304,16 +322,17 @@ function nextQuestion() {
         alert("please select an answer");
         return;
     }
+
      
     //assign selected value to variable
-    let userSelection = selected.value;
+    // let userSelection = selected.value;
 
     //get correctOption and assign to variale
     let correctAnswer = displayQuestions[currentQuestionIndex].correctOption;
     
 
     //check if option selected is correct
-    if(userSelection === correctAnswer)
+    if(selected.value === correctAnswer)
     {
         score += 10;
     }
